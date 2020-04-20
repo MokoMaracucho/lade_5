@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.6.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.oc.moko</groupId>
 	<artifactId>lade</artifactId>
@@ -15,30 +16,56 @@
 	<description>Site communautaire autour de l'escalade</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+		<!-- Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!-- JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 
+		<!--  DevTools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		
+		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- JSTL for JSP -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+	
+		<!-- Need this to compile JSP -->
+<!-- 		We want to use JSP as the view.  -->
+<!-- 		Default embedded servlet container for Spring Boot Starter Web is tomcat.  -->
+<!-- 		To enable support for JSP’s, we would need to add a dependency on tomcat-embed-jasper. -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Spring Boot Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -50,6 +77,20 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+	
+		<!-- Optional, test for static content, bootstrap CSS -->
+<!-- 		WebJars are client-side dependencies packaged into JAR archive files. They work with most JVM containers and web frameworks. -->
+<!-- 		Here are a few interesting advantages of WebJars: -->
+<!-- 		1. We can explicitly and easily manage the client-side dependencies in JVM-based web applications -->
+<!-- 		2. We can use them with any commonly used build tool, eg: Maven, Gradle, etc -->
+<!-- 		3. WebJars behave like any other Maven dependency – which means that we get transitive dependencies as well -->
+		
+<!-- 		Read more about WebJars on : https://www.baeldung.com/maven-webjars -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -60,5 +101,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
